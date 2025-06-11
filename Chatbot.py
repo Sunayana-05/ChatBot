@@ -34,7 +34,7 @@ def generate_response(prompt):
 class ChatApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("AI Chatbot")
+        self.title("BuzzBot")
         self.geometry("1000x600")
         self.minsize(600, 400)
         self.configure(bg="#F0F8FF")
@@ -75,8 +75,8 @@ class ChatApp(tk.Tk):
         self.msg_row = 0
 
         # Welcome message
-        welcome_text = "Hi, I am Sam. How can I help you?"
-        self.add_message(f"Sam: {welcome_text}", is_user=False)
+        welcome_text = "Hi, I am Clyra. How can I help you?"
+        self.add_message(f"Clyra: {welcome_text}", is_user=False)
         self.conversation_history.append(("bot", welcome_text))
         threading.Thread(target=speak, args=(welcome_text,), daemon=True).start()
 
@@ -155,21 +155,21 @@ class ChatApp(tk.Tk):
                 if speaker == "user":
                     prompt += f"User: {text}\n"
                 else:
-                    prompt += f"Sam: {text}\n"
-            prompt += "Sam:"
+                    prompt += f"Clyra: {text}\n"
+            prompt += "Clyra:"
 
             response = generate_response(prompt)
-            self.add_message(f"Sam: {response}", is_user=False)
+            self.add_message(f"Clyra: {response}", is_user=False)
             self.conversation_history.append(("bot", response))
             speak(response)
 
         threading.Thread(target=respond, daemon=True).start()
 
     def end_chat(self):
-        goodbye = "Conversation ended.Goodbye!"
-        self.add_message(f"Sam: {goodbye}", is_user=False)
+        goodbye = "That's it for now.. Catch you later!!"
+        self.add_message(f"Clyra: {goodbye}", is_user=False)
         threading.Thread(target=speak, args=(goodbye,), daemon=True).start()
-        self.after(2000, self.destroy)
+        self.after(000, self.destroy)
 
 if __name__ == "__main__":
     app = ChatApp()
