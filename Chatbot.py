@@ -169,7 +169,7 @@ class ChatApp(tk.Tk):
         goodbye = "That's it for now.. Catch you later!!"
         self.add_message(f"Clyra: {goodbye}", is_user=False)
         threading.Thread(target=speak, args=(goodbye,), daemon=True).start()
-        self.after(000, self.destroy)
+        self.after(3000, self.destroy)
 
 if __name__ == "__main__":
     app = ChatApp()
